@@ -268,18 +268,18 @@
             "type": "string"
           },
           "default": [
-            "Architecture",
-            "Best Practices",
             "Code-Style",
-            "Complexity",
-            "Documentation",
-            "Error Handling",
+            "Best Practices",
             "Logic Errors",
             "Maintainability",
-            "Performance",
-            "Reliability",
+            "Error Handling",
             "Resource Management",
             "Separation of concerns",
+            "Documentation",
+            "Architecture",
+            "Performance",
+            "Complexity",
+            "Reliability",
             "Security"
           ]
         },

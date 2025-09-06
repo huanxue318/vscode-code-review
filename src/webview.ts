@@ -18,7 +18,25 @@ export class WebViewComponent {
   /** Reference to the working editor during note edition */
   private editor: TextEditor | null = null;
 
+  // 中英文分类映射
+  private categoryMap: { [key: string]: string } = {
+    Architecture: '架构',
+    'Best Practices': '最佳实践',
+    'Code-Style': '代码风格',
+    Complexity: '复杂度',
+    Documentation: '文档',
+    'Error Handling': '错误处理',
+    'Logic Errors': '逻辑错误',
+    Maintainability: '可维护性',
+    Performance: '性能',
+    Reliability: '可靠性',
+    'Resource Management': '资源管理',
+    'Separation of concerns': '职责分离',
+    Security: '安全性',
+  };
+
   /**
+   * Show the comment edition panel
    * Show the comment edition panel
    *
    * @param title The title of the panel
@@ -176,9 +194,15 @@ export class WebViewComponent {
   }
 
   getWebviewContent(fileName: string): string {
-    let selectListString = this.categories.reduce((current, category) => {
-      return current + `<option value="${category}">${category}</option>`;
-    }, '');
+    // 生成带中英文的选项列表
+    let selectListString = this.categories
+      .map((category) => {
+        // 如果有对应的中文翻译，则使用中文显示；否则使用原值显示
+        const displayText = this.categoryMap[category] || category;
+        return `<option value="${category}">${displayText}</option>`;
+      })
+      .join('');
+
     const uri = Uri.joinPath(this.context.extensionUri, 'dist', 'webview.html');
     const pathUri = uri.with({ scheme: 'vscode-resource' });
     return fs
