@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/huanxue318/vscode-code-review)(2025-09-06)
+### Bug Fixes
+* 导出到基于CSV的文件以供GitHub、GitLab和JIRA导入时，没有正确引用/转义最终出现在各个CSV字段中的字符串字段。这会阻止对生成的CSV文件进行正确解析和导入，因为它实际上产生了一个无效的CSV文件。
+
 ### [1.33.1](https://github.com/d-koppenhagen/vscode-code-review/compare/v1.33.0...v1.33.1) (2022-12-23)
 
 
